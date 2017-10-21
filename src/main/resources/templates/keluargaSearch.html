@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+
+<title>Tampilkan List Keluarga</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<h1 class="page-header">Tampilkan List Keluarga</h1>
+
+	<form action="/penduduk/cari" method="get" >
+ <input type="hidden" name="id_kota" th:value="${kota.id}" />
+ <input type="hidden" name="id_kecamatan" th:value="${kecamatan.id}" />
+ 
+ 
+  <label for="kota">Kota</label> 
+ <input type="text"  readonly="true"  th:value="${kota.nama_kota}" />
+  <label for="kecamatan">Kecamatan</label> 
+ <input type="text" readonly="true"  th:value="${kecamatan.nama_kecamatan}" />
+ <label for="kecamatan">Kelurahan</label> 
+ <input type="text" readonly="true"  th:value="${kelurahan.nama_kelurahan}" />
+		<div th:each="penduduk,iterationStatus: ${kelurahan.penduduks}">
+				<h4 th:text="${penduduk.nik}"></h4>
+				<h4 th:text="${penduduk.nama}"></h4>
+			</div>
+		<div>
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
+
+

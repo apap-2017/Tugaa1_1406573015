@@ -150,7 +150,7 @@ public class PendudukController
     }
 	
 	
-	@RequestMapping("/penduduk/update/{nik}")
+	@RequestMapping("/penduduk/ubah/{nik}")
 	public String updatePenduduk(Model model, @PathVariable(value = "nik") String nik){
 		PendudukModel penduduk = pendudukDAO.selectpenduduk(nik);
 		if(penduduk != null){
@@ -193,7 +193,7 @@ public class PendudukController
 	}
 	
 	//Soal 6
-	@RequestMapping("/keluarga/update/{nkk}")
+	@RequestMapping("/keluarga/ubah/{nkk}")
 	public String updateKeluarga(Model model, @PathVariable(value = "nkk") String nkk){
 		KeluargaModel keluarga = pendudukDAO.selectkeluarga(nkk);
 		KelurahanModel kelurahan = keluarga.getKelurahan();

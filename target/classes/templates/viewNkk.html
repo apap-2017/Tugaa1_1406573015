@@ -17,7 +17,7 @@
 	<div th:replace="fragments/fragment :: header"></div>
         <h3 th:text="'NKK = ' + ${keluarga.nomor_kk}">NKK KELUARGA</h3>
         <h3 th:text="'Alamat = ' + ${keluarga.alamat}">ALAMAT KELUARGA</h3>
-        <h3 th:text="'RT/RW = ' + ${keluarga.rt} + '/' + ${keluarga.rt}">RT/RW</h3>
+        <h3 th:text="'RT/RW = ' + ${keluarga.rt} + '/' + ${keluarga.rw}">RT/RW</h3>
      <h3 th:text="'Kelurahan/Desa =  ' + ${keluarga.kelurahan.getNama_kelurahan()}">KELURAHAN</h3>
         <h3 th:text="'Kecamatan = ' + ${keluarga.kelurahan.kecamatan.getNama_kecamatan()}">KECAMATAN</h3>
         <h3 th:text="'Kota = ' + ${keluarga.kelurahan.kecamatan.kota.getNama_kota()}">KOTA</h3>

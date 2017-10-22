@@ -23,4 +23,6 @@ public interface PendudukService
 	void updatePenduduk(PendudukModel penduduk);
 	PendudukModel uppenduduk (String id, String nama, String tempat, String tanggal, String is_wni, String pekerjaan, String golongan_darah, String agama, String status_perkawinan, String is_wafat, String id_keluarga, String jenis_kelamin,String status_dalam_keluarga) ;
 	PendudukModel uppenduduk2 (String id, String nik, String nama, String tempat, String tanggal, String is_wni, String pekerjaan, String golongan_darah, String agama, String status_perkawinan, String is_wafat, String id_keluarga, String jenis_kelamin,String status_dalam_keluarga) ;
+	KeluargaModel upKeluarga2(String id, String nkk, String alamat, String rt, String rw, String id_kelurahan, int is_tidak_berlaku);
+	void updateKeluarga(KeluargaModel keluarga);
 }

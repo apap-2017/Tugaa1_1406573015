@@ -22,5 +22,7 @@ public class KeluargaModel
 	private KelurahanModel kelurahan;
 	private List<PendudukModel> penduduks;
 	
-	
+	public String getNama_kelurahan(){
+		return kelurahan.getNama_kelurahan();
+	}
 }

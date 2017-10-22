@@ -160,9 +160,6 @@ public class PendudukController
 		return "not-found";
 	}
 	
-	
-	
-	
 	@RequestMapping("/penduduk/update/submit")
 	public String updateSubmitPenduduk(@RequestParam(value="nama", required=false) String nama,
 								@RequestParam(value="nik", required=false) String nik,
@@ -195,5 +192,42 @@ public class PendudukController
 	
 	}
 	
+	//Soal 6
+	@RequestMapping("/keluarga/update/{nkk}")
+	public String updateKeluarga(Model model, @PathVariable(value = "nkk") String nkk){
+		KeluargaModel keluarga = pendudukDAO.selectkeluarga(nkk);
+		KelurahanModel kelurahan = keluarga.getKelurahan();
+		String nama = kelurahan.getNama_kelurahan();
+		keluarga.setId(nama);
+		if(keluarga != null){
+			model.addAttribute("keluarga",keluarga);
+			return "form-update-keluarga";
+		}
+		return "not-found";
+	}
 	
+	@RequestMapping("/keluarga/update/submit")
+	public String updateSubmitKeluarga(@RequestParam(value="alamat", required=false) String alamat,
+								@RequestParam(value="nkk", required=false) String nkk,
+								@RequestParam(value="rt", required=false) String rt,
+								@RequestParam(value="rw", required=false) String rw,
+								@RequestParam(value="kelurahan", required=false) String kelurahan,
+												Model model){
+			KeluargaModel keluarga = pendudukDAO.selectkeluarga(nkk);
+			KelurahanModel kelurahans = keluarga.getKelurahan();
+			System.out.println(rw);
+			System.out.println(kelurahan);
+			String id =  keluarga.getId();
+			String idk = kelurahans.getId();
+			System.out.println(idk);
+			int idtb= keluarga.getIs_tidak_berlaku();
+			//kalo nkk ga berubah
+				System.out.println(kelurahans.getNama_kelurahan());
+				KeluargaModel keluargas = pendudukDAO.upKeluarga2(id, nkk, alamat, rt, rw, idk, idtb);
+				pendudukDAO.updateKeluarga(keluargas);	
+			model.addAttribute("nkk", nkk);
+			return "success-update-2";
+
+	
+	}
 }

@@ -24,7 +24,7 @@ public class PendudukServiceDatabase implements PendudukService
     @Autowired
     private PendudukMapper pendudukMapper;
 
-
+	//soal 1
 	@Override
 	public PendudukModel selectpenduduk (String nik) {
 		PendudukModel penduduk = pendudukMapper.selectpenduduk(nik);
@@ -39,6 +39,7 @@ public class PendudukServiceDatabase implements PendudukService
 		return penduduk;
 	}
 	
+	//soal 2
 	@Override
 	public KeluargaModel selectkeluarga (String nkk) {
 		KeluargaModel keluarga = pendudukMapper.selectkeluarga2(nkk);
@@ -52,7 +53,8 @@ public class PendudukServiceDatabase implements PendudukService
 		kecamatan.setKota(kota);
 		return keluarga;
 	}
-
+	
+	//soal 3
 	@Override
 	public PendudukModel addpenduduk (String nama, String tempat, String tanggal, String is_wni, String pekerjaan, String golongan_darah, String agama, String status_perkawinan, String is_wafat, String id_keluarga, String jenis_kelamin,String status_dalam_keluarga) {
 		KeluargaModel keluarga = pendudukMapper.selectkeluarga(id_keluarga);
@@ -88,8 +90,7 @@ public class PendudukServiceDatabase implements PendudukService
 			else if (yes < 1000 ){
 			nikf = nik + "0"+ yes;
 			}
-		}
-		
+		}	
 		else{
 				nikf = nik + "0001";
 		}
@@ -160,11 +161,26 @@ public class PendudukServiceDatabase implements PendudukService
 		return penduduk1;
 	}
 	
+	public KeluargaModel upKeluarga2(String id, String nkk, String alamat, String rt, String rw, String id_kelurahan, int is_tidak_berlaku) 
+	{
+		System.out.print(id_kelurahan);
+		KeluargaModel keluarga = new KeluargaModel(id, nkk, alamat, rt, rw, id_kelurahan, is_tidak_berlaku, null, null);
+		return keluarga;
+	}
+	
+	
+	@Override
+	public void updateKeluarga(KeluargaModel keluarga){
+		System.out.println(keluarga.getId());
+		pendudukMapper.updateKeluarga(keluarga);
+	}
+	
 	@Override
 	public void addpenduduk2(PendudukModel penduduk){
 			pendudukMapper.addpenduduks(penduduk);
 	}
 	
+	//soal 4
 	@Override
 	public KeluargaModel addKeluarga(String alamat, String rt, String rw, String nama_kelurahan){
 		String awal6 = pendudukMapper.selectkodekelurahan(nama_kelurahan);
@@ -213,7 +229,8 @@ public class PendudukServiceDatabase implements PendudukService
 			pendudukMapper.addkeluargas(keluarga);
 	}
 	
-	
+		
+	//soal 8
 	@Override
 	public KotaModel selectkecamatan(String id_kota) {
 		KotaModel kota = pendudukMapper.selectkota(id_kota);
@@ -229,8 +246,7 @@ public class PendudukServiceDatabase implements PendudukService
 		kecamatan.setKelurahans(kelurahan);
 		return kecamatan;
 	}
-	
-	//soal 8
+
 	@Override
 	public KelurahanModel selectkeluargas(String id_kelurahan){ 
 		KelurahanModel kelurahan = pendudukMapper.selectkelurahan(id_kelurahan);
@@ -250,7 +266,7 @@ public class PendudukServiceDatabase implements PendudukService
 		else{
 			newStatus = 0;
 		}
-		penduduk.setIs_wafat(0);
+		penduduk.setIs_wafat(newStatus);
 		pendudukMapper.updateStatusHidup(penduduk);
 		if(newStatus == 1 ){
 			KeluargaModel keluarga = pendudukMapper.selectkeluarga(penduduk.getId_keluarga());

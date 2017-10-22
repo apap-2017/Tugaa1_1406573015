@@ -2,8 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>View Keluarga by NKK</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#table').DataTable();
+	});
+</script>
     </head>
     <body>
+	<div th:replace="fragments/fragment :: header"></div>
         <h3 th:text="'NKK = ' + ${keluarga.nomor_kk}">NKK KELUARGA</h3>
         <h3 th:text="'Alamat = ' + ${keluarga.alamat}">ALAMAT KELUARGA</h3>
         <h3 th:text="'RT/RW = ' + ${keluarga.rt} + '/' + ${keluarga.rt}">RT/RW</h3>
@@ -15,7 +26,7 @@
      <h3>Anggota Keluarga</h3>
      <br/>
      
-     <table>
+     <table id = "table">
    <thead>
      <tr>
     <th>No</th>

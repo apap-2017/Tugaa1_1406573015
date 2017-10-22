@@ -5,11 +5,21 @@
 <head>
 
 <title>Tampilkan List Keluarga</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#table').DataTable();
+	});
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
-
+	<div th:replace="fragments/fragment :: header"></div>
 	<h1 class="page-header">Tampilkan List Keluarga</h1>
 
 	<form action="/penduduk/cari" method="get" >
@@ -23,14 +33,23 @@
  <input type="text" readonly="true"  th:value="${kecamatan.nama_kecamatan}" />
  <label for="kecamatan">Kelurahan</label> 
  <input type="text" readonly="true"  th:value="${kelurahan.nama_kelurahan}" />
-		<div th:each="penduduk,iterationStatus: ${kelurahan.penduduks}">
-				<h4 th:text="${penduduk.nik}"></h4>
-				<h4 th:text="${penduduk.nama}"></h4>
-			</div>
-		<div>
-			<button type="submit">Submit</button>
-		</div>
 	</form>
+	<table id="table" class="display">
+		<thead>
+			<tr>
+				<th>Nik</th>
+				<th>Nama</th>
+				<th>Jenis Kelamin</th>
+			</tr>
+			</thead>
+				<tbody>
+					<tr th:each="penduduk,iterationStatus: ${kelurahan.penduduks}">
+						<td th:text="${penduduk.nik}"></td>
+						<td th:text="${penduduk.nama}"></td>
+						<td th:text="${penduduk.jenis_kelamin}"></td>
+					</tr>
+				</tbody>
+	</table>
 
 </body>
 

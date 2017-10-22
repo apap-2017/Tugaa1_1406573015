@@ -2,8 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>View Penduduk by NIK</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#table').DataTable();
+	});
+</script>
     </head>
     <body>
+	<div th:replace="fragments/fragment :: header"></div>
      <h2 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}"></h2>
         <h3 th:text="'NIK ' + ${penduduk.nik}">Penduduk NIK</h3>
         <h3 th:text="'Nama ' + ${penduduk.nama}">Penduduk Name</h3>

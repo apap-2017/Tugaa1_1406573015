@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Update Keluarga</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#table').DataTable();
+	});
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<h1 class="page-header">Update Keluarga</h1>
+
+	<form action="/keluarga/update/submit" method="post" >
+		<input type="hidden" name="nkk" th:value="${keluarga.nomor_kk}" />
+		<div>
+			<label for="nama">Alamat</label> <input type="text" name="nama" th:value="${keluarga.alamat}" th:field="*{keluarga.alamat}" />
+		</div>
+		<div>
+			<label for="rt">RT</label> <input type="text" name="rt" th:value="${keluarga.rt}" th:field="*{keluarga.rt}" />
+		</div>
+		<div>
+			<label for="rw">RW</label> <input type="text" name="rw" th:value="${keluarga.rw}" th:field="*{keluarga.rw}" />
+		</div>
+		<div>
+			<label for="rw">kelurahan</label> <input type="text" name="kelurahan" th:value="${keluarga.id}" th:field="*{keluarga.id}" />
+		</div>
+		
+		
+
+		<div>
+			<button type="submit" name="action" value="save">Submit</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
+
+
